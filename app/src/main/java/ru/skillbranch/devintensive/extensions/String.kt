@@ -12,8 +12,5 @@ fun String.truncate(countSymbol: Int = 16): String {
 }
 
 fun String.stripHtml() : String {
-    val specSymbol : Regex = "[&<>'\"]".toRegex()
-    var resultStr = this.trimEnd() ?: ""
-
-    return resultStr.replace(specSymbol, "")
+    return this.replace(Regex("<[^<]*>"), "").replace(Regex("\\s+"), " ")
 }

@@ -23,13 +23,26 @@ data class User private constructor(
         }
     }
 
-    object Builder {
-        private var lastId: Int = -1
+    class Builder {
 
-        fun build(firstName: String?, lastName: String?, avatar: String?, rating: Int = 0, respect: Int = 0,
-                  lastVisit: Date? = Date(), isOnilne: Boolean = false): User {
-            lastId++
-            return User(lastId.toString(), firstName, lastName, avatar, rating, respect, lastVisit, isOnilne)
-        }
+        var id: String = "1"
+        var firstName: String? = null
+        var lastName: String? = null
+        var avatar: String? = null
+        var rating: Int = 0
+        var respect: Int = 0
+        var lastVisit: Date? = Date()
+        var isOnline: Boolean = false
+
+        fun id(id: String) = this.apply { this.id = id}
+        fun firstName(firstName: String?) = this.apply { this.firstName = firstName }
+        fun lastName(lastName: String) = this.apply { this.lastName = lastName }
+        fun avatar(avatar: String) = this.apply { this.avatar = avatar }
+        fun rating(rating: Int) = this.apply { this.rating = rating }
+        fun respect(respect: Int) = this.apply { this.respect = respect }
+        fun lastVisit(lastVisit: Date) = this.apply { this.lastVisit = lastVisit }
+        fun isOnline(isOnline: Boolean) = this.apply { this.isOnline = isOnline }
+
+        fun build() = User(id, firstName, lastName, avatar, rating, respect, lastVisit, isOnline)
     }
 }

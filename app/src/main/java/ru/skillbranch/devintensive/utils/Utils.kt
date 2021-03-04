@@ -41,10 +41,10 @@ object Utils {
     fun parseFullName(fullName: String?): Pair<String?, String?> {
         val parts: List<String>? = fullName?.split(" ")
 
-        var firstName = parts?.getOrNull(0)
-        var lastName = parts?.getOrNull(1)
+        var firstName = ((parts?.getOrElse(0) {""}) ?: "").trim()
+        var lastName = ((parts?.getOrElse(1) {""}) ?: "").trim()
 
-        return firstName to lastName
+        return (if (firstName.isEmpty()) null else firstName)  to (if (lastName.isEmpty()) null else lastName)
     }
 
     fun toInitials(firstName: String?, lastName: String? = null): String? {
