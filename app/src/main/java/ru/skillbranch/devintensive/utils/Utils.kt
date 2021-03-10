@@ -57,7 +57,7 @@ object Utils {
         return getInitials(firstNameLocal) + getInitials(lastNameLocal)
     }
 
-    private fun getInitials(string: String) = (if (string.isEmpty()) "" else string?.substring(0, 1)?.capitalize())
+    private fun getInitials(string: String?) = (if (string.isNullOrEmpty()) "" else string?.substring(0, 1)?.capitalize())
 
 
     fun transliteration(payload: String, divider: String = " "): String {
